@@ -6,6 +6,7 @@ import colorama as cr
 def affirm():
   input('Click [Enter] to continue ')
 
+
 def clear():
   replit.clear()
 
@@ -24,7 +25,7 @@ brave = 0
 
 #-  -  -  select the role  -  -  #
 print(
-  f'{cr.Fore.GREEN} You are, \n (1) a brave young boy named Jack who lived in a small village nestled in the rolling hills of the countryside. 👦 \n (2) a young girl named Sophie who is kind and curious, and loved nothing more than to explore the fields and forests around her home. 👧 {cr.Fore.RESET}'
+  f'{cr.Fore.GREEN} You are, \n (1) a brave young boy named Jack who lived in a small village nestled in the rolling hills of the countryside. 👦 \n (2) a young girl named Sophie who is kind and curious, and loved nothing more than to explore the fields and forests around her home. 👧 \n {cr.Fore.RESET}'
 )
 
 role = None
@@ -119,9 +120,9 @@ affirm()
 clear()
 #  -  -  -  trial 3  -  -  -  #
 trial3 = None
-if (trial1 == '1' and trial2 == '1'): # old woman
+if (trial1 == '1' and trial2 == '1'):  # old woman
   print(
-    f'{cr.Fore.GREEN} You knocked gently and called out, "Hello? Is anyone there?"\n The humming stopped, and a soft voice answered, "Yes, dear. Come in." \n (1) You went inside. 🤠 \n (2) "Not untill you tell me who you are." You said back. 🤨 {cr.Fore.RESET}'
+    f'{cr.Fore.GREEN} You knocked gently and called out, "Hello? Is anyone there?"\n The humming stopped, and a soft voice answered, "Yes, dear. Come in." \n (1) You went inside. 🤠 \n (2) "Not untill you tell me who you are." You said back. 🤨 \n {cr.Fore.RESET}'
   )
   while trial3 != ['1', '2']:
     trial3 = input('Choose what would you do: ')
@@ -140,9 +141,9 @@ if (trial1 == '1' and trial2 == '1'): # old woman
     else:
       print('Your input should be either 1 or 2.')
 
-elif (trial1 == '1' and trial2 == '2'): # old woman
+elif (trial1 == '1' and trial2 == '2'):  # old woman
   print(
-    f'{cr.Fore.GREEN} Someone called you. "Hello? Is anyone there?"\n (1) You silently walked away from the cottage. 🛖 \n (2) "Yes, I am from the near by village. Who are you?" 😊 {cr.Fore.RESET}'
+    f'{cr.Fore.GREEN} Someone called you. "Hello? Is anyone there?"\n (1) You silently walked away from the cottage. 🛖 \n (2) "Yes, I am from the near by village. Who are you?" 😊 \n {cr.Fore.RESET}'
   )
   while trial3 != ['1', '2']:
     trial3 = input('Choose what would you do: ')
@@ -157,16 +158,14 @@ elif (trial1 == '1' and trial2 == '2'): # old woman
             f'Brave: {brave} ')
       exit('You are welcome to play again 🤠')
     elif (trial3 == '2'):
-      print(
-        f'{cr.Fore.GREEN} "I am a healer. You may come inside."'
-      )
+      print(f'{cr.Fore.GREEN} "I am a healer. You may come inside."')
       brave += 1
       break
     else:
       print('Your input should be either 1 or 2.')
-else: # old man
+else:  # old man
   print(
-    f'{cr.Fore.GREEN} "I studied magic and socery in my whole life and you seem to be a kind and brave soul."\n "Would you like to learn some?" The old man asked. \n (1) "Yes of course, Thnak you sir." 😍\n (2) "No, thank you sir. Magic is scary." 🤗{cr.Fore.RESET}'
+    f'{cr.Fore.GREEN} "I studied magic and socery in my whole life and you seem to be a kind and brave soul."\n "Would you like to learn some?" The old man asked. \n (1) "Yes of course, Thnak you sir." 😍\n (2) "No, thank you sir. Magic is scary." 🤗 \n {cr.Fore.RESET}'
   )
   while trial3 != ['1', '2']:
     trial3 = input('Choose what would you do: ')
