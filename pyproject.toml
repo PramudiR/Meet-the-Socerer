@@ -13,6 +13,7 @@ urllib3 = "^1.26.12"
 ansicolors = "^1.1.8"
 colorama = "^0.4.6"
 functions = "^0.7.0"
+Pillow = "^9.4.0"
 
 [tool.poetry.dev-dependencies]
 debugpy = "^1.6.2"
