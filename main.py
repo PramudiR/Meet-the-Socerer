@@ -8,7 +8,7 @@ screen = pygame.display.set_mode((0,0), flags, 16)
 pygame.display.set_caption("Magical Adventure")
 screen_w, screen_h = screen.get_size()
 screen.set_alpha(None)
-bg = pygame.image.load("bg.png")
+bg = pygame.image.load("bg1.png")
 bg = pygame.transform.scale(bg, (screen_w, screen_h))
 screen.blit(bg, (0, 0))
 objects = []
@@ -63,8 +63,8 @@ def blit_text(surface, text, pos, font, color):
   words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
   space = font.size(' ')[0]  # The width of a space.
   max_width, max_height = surface.get_size()
-  max_width = int(max_width*0.8)
-  max_height = int(max_height*0.8)
+  max_width = int(max_width*0.85)
+  max_height = int(max_height*0.85)
   x, y = pos
   for line in words:
       for word in line:
@@ -112,7 +112,7 @@ def rank():
   pygame.display.flip()
 
 # Start page 
-welcm = 'Greetings Seeker ! \n Before going further be warned your journey is greately affected by your choices. Yet magic can do changes too.\n \n Each choice may or may not add scores about 4 aspects of your personality. \n At the end you will know more about yourself'
+welcm = 'Greetings Seeker ! \n Before going further be warned your journey is greately affected by your choices. Yet magic can do changes too.\n \n Each choice may or may not add scores about 4 aspects of your personality. \n At the end you will know more about yourself.'
 blit_text(screen, welcm, (screen_w*0.1, screen_h*0.1), font, '#ccd5ae')
 
 score()
