@@ -59,6 +59,25 @@ class Button():
 
 
 # frequent fucntions
+def blit_text(surface, text, pos, font, color):
+  words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
+  space = font.size(' ')[0]  # The width of a space.
+  max_width, max_height = surface.get_size()
+  max_width = int(max_width*0.8)
+  max_height = int(max_height*0.8)
+  x, y = pos
+  for line in words:
+      for word in line:
+          word_surface = font.render(word, 0, color)
+          word_width, word_height = word_surface.get_size()
+          if x + word_width >= max_width:
+              x = pos[0]  # Reset the x.
+              y += word_height  # Start on new row.
+          surface.blit(word_surface, (x, y))
+          x += word_width + space
+      x = pos[0]  # Reset the x.
+      y += word_height  # Start on new row.
+
 def next():
   screen.blit(bg, (0, 0))
 
@@ -91,7 +110,11 @@ def rank():
   text = font.render(rnktxt, True, '#fcd5ce')
   screen.blit(text, (screen_w*0.1, screen_h*0.7))
   pygame.display.flip()
-  
+
+# Start page 
+welcm = 'Greetings Seeker ! \n Before going further be warned your journey is greately affected by your choices. Yet magic can do changes too.\n \n Each choice may or may not add scores about 4 aspects of your personality. \n At the end you will know more about yourself'
+blit_text(screen, welcm, (screen_w*0.1, screen_h*0.1), font, '#ccd5ae')
+
 score()
 rank()
 Button(screen_w*0.83, screen_h*0.83, 70, 36, 'Next', next)
