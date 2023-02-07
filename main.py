@@ -16,6 +16,7 @@ font = pygame.font.Font('pacifico.ttf', 20)
 
 
 # game buttions
+k = 0
 class Button():
 
     def __init__(self,
@@ -44,8 +45,9 @@ class Button():
 
         self.buttonSurf = font.render(buttonText, True, '#fefae0')
         objects.append(self)
-
+    
     def process(self):
+        global k
         mousePos = pygame.mouse.get_pos()
         self.buttonSurface.fill(self.fillColors['normal'])
         if self.buttonRect.collidepoint(mousePos):
@@ -57,6 +59,7 @@ class Button():
                 elif not self.alreadyPressed:
                     self.onclickFunction()
                     self.alreadyPressed = True
+                k = 1 
             else:
                 self.alreadyPressed = False
 
@@ -65,7 +68,8 @@ class Button():
             self.buttonRect.height / 2 - self.buttonSurf.get_rect().height / 2
         ])
         screen.blit(self.buttonSurface, self.buttonRect)
-
+        return k
+      
 
 # frequent fucntions
 def blit_text(surface, text, pos, font, color):
@@ -87,10 +91,6 @@ def blit_text(surface, text, pos, font, color):
             x += word_width + space
         x = pos[0]  # Reset the x.
         y += word_height  # Start on new row.
-
-
-def next():
-    screen.blit(bg, (0, 0))
 
 
 #-  -  - score sheme  -  -  #
@@ -129,9 +129,25 @@ def rank():
 welcm = 'Greetings Seeker ! \n Before going further be warned your journey is greately affected by your choices. Yet magic can do changes too.\n \n Each choice may or may not add scores about 4 aspects of your personality. \n At the end you will know more about yourself.'
 blit_text(screen, welcm, (screen_w * 0.1, screen_h * 0.1), font, '#ccd5ae')
 
-score()
-rank()
-Button(screen_w * 0.83, screen_h * 0.83, 70, 36, 'Next', next)
+
+# screen 1
+def sc1():
+    screen.blit(bg, (0, 0))
+    rk = 'Your rank in the game go up as follows, \n\n Level 1 --> Newbie Explorer\n Level 2 --> Explorer\n Level 3 --> Adventurer\n Level 4 --> Young Wizard\n Level 5 --> Wizrd \n'
+    blit_text(screen, rk, (screen_w * 0.1, screen_h * 0.1), font, '#ccd5ae')
+
+    score()
+    rank()
+
+bt1 = Button(screen_w * 0.83, screen_h * 0.83, 70, 36, 'Next', sc1)
+
+# screen 2
+def next():
+    screen.blit(bg, (0, 0))
+    rk = 'vhftmbbjuyihdesr'
+    blit_text(screen, rk, (screen_w * 0.1, screen_h * 0.1), font, '#ccd5ae')
+
+bt2 = Button(screen_w * 0.73, screen_h * 0.83, 70, 36, 'Next', next)
 
 #main game loop
 while True:
@@ -141,7 +157,15 @@ while True:
             pygame.quit()
             sys.exit()
 
-    for object in objects:
-        object.process()
+    if bt1.process() == 1:
+      bt1 = bt2
+      bt2.process()
+      
+    # i = 0
+    # while i < len(objects):
+    #     objects[0].process()
+    #     if objects[0].process() == 1:
+    #       objects.pop(0)
+    #     i += 1
 
     pygame.display.update()
